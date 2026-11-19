@@ -1,0 +1,4 @@
+# ponditech.com is a plain static site: no build step, Netlify publishes the files as they are.
+[build]
+  publish = "."
+  command = ""
