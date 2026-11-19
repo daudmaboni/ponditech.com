@@ -641,6 +641,10 @@ html[data-theme=dark] .totop{color:#FAFAFA;border-color:rgba(255,255,255,.16);ba
 html[data-theme=dark] .totop .ring{stroke:#2FD3C3}
 body.menu-open .totop{opacity:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.totop{transition:opacity .2s}}
+
+/* ===== No sideways sliding on phones (20 Nov) — the page can only scroll up and down; pinch-zoom still works ===== */
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
+@media (max-width:640px){.fd-desk{right:6px;width:42%}.fd-media{overflow:visible}}
 </style>
 </head>
 <body>
