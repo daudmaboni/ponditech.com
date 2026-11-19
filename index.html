@@ -592,6 +592,20 @@ html[data-theme=dark] .bub.them{background:#2A2A2F}
 .theme{width:40px;height:40px}
 .lang{height:40px;align-items:center;padding:3px}
 .lang button{height:100%;padding:0 12px}
+
+/* ===== Contact form (20 Nov): shorter on phones ===== */
+.form-time{font-family:inherit}
+@media (max-width:640px){
+  .cta-box{padding:20px 10px}
+  form{padding:18px 16px 16px;border-radius:20px}
+  .row{grid-template-columns:1fr 1fr;gap:10px}
+  .fld{margin-bottom:10px;min-width:0}
+  .fld label{margin-bottom:5px;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fld input,.fld select,.fld textarea{font-size:16px;padding:10px 12px;border-radius:12px}
+  .fld textarea{min-height:78px}
+  form .btn{padding:13px;margin-top:4px}
+  .form-time{margin-top:10px}
+}
 </style>
 </head>
 <body>
