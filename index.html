@@ -554,6 +554,44 @@ html[data-theme=dark] .curtain{background:#16161A}
 .curtain-mark{font-family:var(--mono);font-weight:700;font-size:22px;letter-spacing:-.6px;display:flex;align-items:flex-end}
 .curtain-mark i{display:inline-block;width:12px;height:3px;background:var(--teal);margin:0 0 4px 3px}
 .curtain-in span{font-family:var(--serif);font-style:italic;font-size:clamp(40px,6vw,72px);line-height:1}
+
+/* ===== Feature cards (20 Nov): one surface per feature — illustration edge to edge on top, text below ===== */
+.grid6{gap:16px}
+.card{padding:0;overflow:hidden;border-radius:24px;border:1px solid var(--line);background:var(--surface)}
+.card .viz{--glow:rgba(18,181,166,.16);border-radius:0;height:200px;padding:22px;
+  background:radial-gradient(90% 80% at 50% 0%,var(--glow),transparent 70%),var(--surface-2);border-bottom:1px solid var(--line)}
+.grid6 .card:nth-child(2) .viz{--glow:rgba(124,156,245,.18)}
+.grid6 .card:nth-child(3) .viz{--glow:rgba(255,200,61,.18)}
+.grid6 .card:nth-child(4) .viz{--glow:rgba(37,211,102,.16)}
+.grid6 .card:nth-child(5) .viz{--glow:rgba(18,181,166,.2)}
+.grid6 .card:nth-child(6) .viz{--glow:rgba(11,31,58,.08)}
+html[data-theme=dark] .card .viz{background:radial-gradient(90% 80% at 50% 0%,var(--glow),transparent 70%),#1A1A1D}
+html[data-theme=dark] .grid6 .card:nth-child(6) .viz{--glow:rgba(255,255,255,.06)}
+.card .txt{padding:20px 22px 22px}
+.card h4{font-size:18px;margin-bottom:6px}
+.card p{color:var(--body)}
+/* the small app UI floating on the panel */
+.mini{border-radius:14px;box-shadow:0 1px 2px rgba(11,31,58,.06),0 12px 28px -14px rgba(11,31,58,.35)}
+html[data-theme=dark] .mini{background:#232327;border-color:rgba(255,255,255,.07);box-shadow:0 12px 28px -14px rgba(0,0,0,.8)}
+.mrow small{font-family:inherit;font-size:11px}
+.pay .ico{font-family:inherit;font-size:10.5px;font-weight:700}
+.pay small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.pay-match{margin-top:10px;border-top:1px solid var(--line)}
+.chatviz{width:100%;max-width:270px;display:flex;flex-direction:column;gap:8px}
+html[data-theme=dark] .bub.them{background:#2A2A2F}
+@media (max-width:640px){
+  .grid6{gap:12px}
+  .card{border-radius:20px}
+  .card .viz{height:156px;padding:16px}
+  .card .txt{padding:16px 18px 18px}
+  .card h4{font-size:17px;margin-bottom:4px}
+  .card p{font-size:14px;line-height:1.55}
+  .zero{font-size:64px}
+}
+/* Header controls: all the same height */
+.theme{width:40px;height:40px}
+.lang{height:40px;align-items:center;padding:3px}
+.lang button{height:100%;padding:0 12px}
 </style>
 </head>
 <body>
@@ -656,7 +694,7 @@ html[data-theme=dark] .curtain{background:#16161A}
     <div class="grid6">
       <div class="card rv">
         <div class="viz"><div class="mini">
-          <div class="mrow"><span>Ofa ya Wiki</span><span class="tagp t-teal">4.1× return</span></div>
+          <div class="mrow"><span>Offer ya Wiki</span><span class="tagp t-teal">4.1× return</span></div>
           <div class="mrow"><span>Testimonial</span><span class="tagp t-teal">2.9× return</span></div>
           <div class="mrow"><span>Product video</span><span class="tagp t-red">1.6× return</span></div>
         </div></div>
@@ -678,16 +716,16 @@ html[data-theme=dark] .curtain{background:#16161A}
         <div class="txt"><h4 data-i="f3">Never lose a warm lead</h4><p data-i="f3d">See who got the payment number but never paid, and open the chat in one tap to follow up.</p></div>
       </div>
       <div class="card rv">
-        <div class="viz" style="background:var(--wa)"><div style="width:100%;max-width:260px;display:flex;flex-direction:column;gap:7px">
+        <div class="viz"><div class="chatviz">
           <div class="bub me">Wateja gani walilipa wiki hii?<small>09:12</small></div>
-          <div class="bub them"><b>23 wateja</b> walilipa, jumla TSh 1.1M. 14 walitoka "Ofa ya Wiki".<small>09:12</small></div>
+          <div class="bub them"><b>23 wateja</b> walilipa, jumla TSh 1.1M. 14 walitoka "Offer ya Wiki".<small>09:12</small></div>
         </div></div>
         <div class="txt"><h4 data-i="f4">Ask in your own words</h4><p data-i="f4d">Ask Kito anything about your sales in Swahili or English and get an answer from your own data.</p></div>
       </div>
       <div class="card rv">
         <div class="viz"><div class="mini">
-          <div class="pay"><span class="ico">TSh</span><div><b>45,000 received</b><small style="font-family:var(--mono);font-size:10.5px;color:var(--muted)">Lipa namba · 14:03</small></div></div>
-          <div class="mrow" style="margin-top:8px;border-top:1px solid var(--line)"><small>Matched to ad</small><span class="tagp t-teal">Ofa ya Wiki</span></div>
+          <div class="pay"><span class="ico">TSh</span><div><b>45,000 received</b><small>Lipa namba · 14:03</small></div></div>
+          <div class="mrow pay-match"><small>Matched to ad</small><span class="tagp t-teal">Offer ya Wiki</span></div>
         </div></div>
         <div class="txt"><h4 data-i="t3">Made for Lipa namba</h4><p data-i="f5d">Payments are matched back to the chat and the ad that started it.</p></div>
       </div>
