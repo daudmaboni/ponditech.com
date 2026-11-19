@@ -37,7 +37,7 @@
   --bg:#FAFAFA;--ink:#0B1F3A;--ink-2:#14294B;--body:#4A5468;--muted:#7A8496;--line:rgba(11,31,58,.09);--line-2:rgba(11,31,58,.14);
   --teal:#12B5A6;--teal-d:#0C8F83;--teal-dd:#0A6F66;--teal-l:#E6F7F5;--sand:#F1ECE4;--yellow:#FFC83D;--white:#fff;
   --sans:"Geist",system-ui,-apple-system,sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--serif:"Instrument Serif",Georgia,serif;
-  --r:20px;--navy:#0B1F3A;--surface:#fff;--surface-2:#FBFBFC;--chip:#F3F4F6;--chip-2:rgba(11,31,58,.05);--hdr:rgba(250,250,250,.78);--dot:#E2E5EA;--mark:rgba(11,31,58,.10);--bub-me:#D9FDD3;--bub-me-t:#102018;--wa:#EFE7DD;--mist:#EEF2F6;--grid:rgba(11,31,58,.05);--deep:#0A1830;--amber-l:#FFF4D6;--amber-t:#8A6200;--blue-l:#EAF0FE;--blue-t:#3557C9;--red-l:#FDECEC;--red-t:#B4232C;--shadow:0 1px 2px rgba(11,31,58,.04),0 8px 24px -12px rgba(11,31,58,.12);
+  --r:20px;--navy:#0B1F3A;--surface:#fff;--surface-2:#FBFBFC;--chip:#F3F4F6;--chip-2:rgba(11,31,58,.05);--hdr:rgba(250,250,250,.94);--dot:#E2E5EA;--mark:rgba(11,31,58,.10);--bub-me:#D9FDD3;--bub-me-t:#102018;--wa:#EFE7DD;--mist:#EEF2F6;--grid:rgba(11,31,58,.05);--deep:#0A1830;--amber-l:#FFF4D6;--amber-t:#8A6200;--blue-l:#EAF0FE;--blue-t:#3557C9;--red-l:#FDECEC;--red-t:#B4232C;--shadow:0 1px 2px rgba(11,31,58,.04),0 8px 24px -12px rgba(11,31,58,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -358,7 +358,7 @@ body.show-legal main > *:not(.legal){display:none}
 html[data-theme=dark]{color-scheme:dark;
   --bg:#0F0F10;--ink:#FAFAFA;--ink-2:#E4E4E7;--body:rgba(250,250,250,.62);--muted:rgba(250,250,250,.42);
   --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
-  --surface:#161618;--surface-2:#1B1B1E;--chip:#222226;--chip-2:rgba(255,255,255,.05);--hdr:rgba(22,22,24,.72);--dot:#2E2E33;
+  --surface:#161618;--surface-2:#1B1B1E;--chip:#222226;--chip-2:rgba(255,255,255,.05);--hdr:rgba(18,18,20,.92);--dot:#2E2E33;
   --teal-d:#19C2B2;--teal-dd:#5FE3D5;--teal-l:rgba(18,181,166,.13);--sand:#1B1916;--mist:#141518;--grid:rgba(255,255,255,.035);--deep:#0A0A0B;
   --mark:rgba(255,255,255,.09);--bub-me:#134D37;--bub-me-t:#E7FBEF;--wa:#0E1418;
   --amber-l:rgba(255,200,61,.13);--amber-t:#FFD26B;--blue-l:rgba(124,156,245,.14);--blue-t:#A9BEFF;--red-l:rgba(240,82,82,.14);--red-t:#FF9C9C;
@@ -645,6 +645,18 @@ body.menu-open .totop{opacity:0;pointer-events:none}
 /* ===== No sideways sliding on phones (20 Nov) — the page can only scroll up and down; pinch-zoom still works ===== */
 html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 @media (max-width:640px){.fd-desk{right:6px;width:42%}.fd-media{overflow:visible}}
+
+/* ===== Spacing pass (20 Nov): no big empty gaps on phones ===== */
+.sec-beliefs{padding-top:16px;padding-bottom:28px}
+@media (max-width:1040px){.tilt-wrap{padding:16px 24px}.beliefs{gap:24px}}
+@media (max-width:640px){
+  section,.sec-beliefs{padding:26px 0}
+  .problem{margin-top:18px}
+  .beliefs,.co{gap:20px}
+  .beliefs .cta-row{margin-top:20px}
+  .tilt-wrap{padding:0}
+  .steps-cta{margin-top:22px}
+}
 </style>
 </head>
 <body>
@@ -875,11 +887,11 @@ html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 </section>
 
 <!-- PRINCIPLES -->
-<section style="padding-top:60px">
+<section class="sec-beliefs">
   <div class="wrap beliefs">
     <div class="left rv">
       <div class="eyebrow" data-i="pe">What we believe</div>
-      <h2 data-i="phh">Software should earn its <span>place in your business.</span></h2>
+      <h2 data-i="phh">Software should earn <span>its place in your business.</span></h2>
       <p data-i="pbp">Three rules we hold ourselves to on every product and every client project.</p>
       <div class="cta-row" style="justify-content:flex-start"><a href="#contact" class="btn btn-teal"><span data-i="ncta2">Get in touch</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
