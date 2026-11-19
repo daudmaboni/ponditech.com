@@ -606,6 +606,21 @@ html[data-theme=dark] .bub.them{background:#2A2A2F}
   form .btn{padding:13px;margin-top:4px}
   .form-time{margin-top:10px}
 }
+
+/* ===== How we work on phones/tablets (20 Nov): stacking cards — each step slides up and lands on the one before ===== */
+@media (max-width:1023px){
+  .steps{display:block;overflow:visible;margin:22px 0 0;padding:0 0 8px}
+  .st{position:sticky;top:calc(84px + var(--i,0) * 14px);margin:0 0 18px;flex:none;transform:none!important}
+  .st:last-child{margin-bottom:0}
+  .st article{min-height:300px;padding:24px;border-radius:26px;transition:none;transform-origin:50% 0;will-change:transform}
+  .st article:hover{transform:none}
+  .st .num{font-size:96px;padding-top:12px}
+  .st-tx{margin-top:16px}
+  .st h4{font-size:18px;margin-bottom:6px}
+  .st p{font-size:14px;line-height:1.55}
+  .st article{box-shadow:0 -10px 30px -12px rgba(15,15,16,.35),0 0 0 1px var(--line)}
+  html[data-theme=dark] .st article{box-shadow:0 -14px 34px -10px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
+}
 </style>
 </head>
 <body>
@@ -1130,6 +1145,27 @@ html[data-theme=dark] .bub.them{background:#2A2A2F}
     function kick(){if(!mq.matches||rm.matches){clear();return}if(!raf)raf=requestAnimationFrame(step)}
     pos=target();if(mq.matches&&!rm.matches)apply(pos);
     addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);mq.addEventListener('change',kick);
+  })();
+
+
+  /* steps stack (phones/tablets): each card tilts in as it rises, lands flat on the pile; cards underneath shrink back a little */
+  (function(){var ol=document.getElementById('steps');if(!ol)return;var lis=[].slice.call(ol.children),arts=lis.map(function(li){return li.querySelector('article')});
+    var mq=matchMedia('(max-width:1023px)'),rm=matchMedia('(prefers-reduced-motion: reduce)'),raf=0,TILT=[0,-4,3.5,-3];
+    lis.forEach(function(li,i){li.style.setProperty('--i',i)});
+    function run(){raf=0;
+      if(!mq.matches||rm.matches){arts.forEach(function(a){a.style.transform=''});return}
+      var vh=innerHeight,tops=lis.map(function(li){return li.getBoundingClientRect().top}),stick=lis.map(function(li){return parseFloat(getComputedStyle(li).top)||84});
+      arts.forEach(function(a,i){
+        // how far this card is from landing on the pile: 1 = just entering at the bottom, 0 = landed
+        var d=Math.min(1,Math.max(0,(tops[i]-stick[i])/(vh*.75)));
+        // how much of it is covered by the next card landing on top
+        var cov=0;if(i<lis.length-1){cov=1-Math.min(1,Math.max(0,(tops[i+1]-stick[i+1])/(vh*.75)))}
+        var sc=1-.05*cov, rot=TILT[i]*d, ty=d*24;
+        a.style.transform='translateY('+ty.toFixed(1)+'px) rotate('+rot.toFixed(2)+'deg) scale('+sc.toFixed(3)+')';
+        a.style.filter=cov>0?'brightness('+(1-.18*cov).toFixed(3)+')':'';
+      })}
+    function on(){if(!raf)raf=requestAnimationFrame(run)}
+    run();addEventListener('scroll',on,{passive:true});addEventListener('resize',on);mq.addEventListener('change',on);
   })();
 
   // theme
